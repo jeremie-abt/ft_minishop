@@ -2,6 +2,7 @@
 session_start();
 include_once '../bdd/bdd_connec.php';
 echo '<p>Vous etes sur le point de commander :<br></p>';
+print_r($_SESSION);
 if($_SESSION['panier'])
 {
   foreach ($_SESSION['panier'] as $v)

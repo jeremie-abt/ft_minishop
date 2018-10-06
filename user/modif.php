@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once '../includes/db.inc.php';
+    include_once '../bdd/bdd_connec.php';
     if (isset($_SESSION['loggued_on_user']))
     {
         if (isset($_POST['oldlogin']) && isset($_POST['newlogin']) && isset($_POST['submit']))

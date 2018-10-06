@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once '../includes/db.inc.php';
+    include_once '../bdd/bdd_connec.php';
     if (isset($_POST['login']) && isset($_POST['passwd']) && isset($_POST['submit']))
     {
         $pass_word = hash("whirlpool", $_POST['passwd']);
@@ -12,11 +12,11 @@
             if ($login == $row['username'] && $pass_word == $row['passwd'])
             {
                 $_SESSION['loggued_on_user'] = $login;
-                $_SESSION['panier'] = 0;
-                header("location: ../index.html?logging=success");
+                header("location: ../index.php?logging=success");
             }
         }
-        if (isset($_SESSION['loggued_on_user']))
-            die("Error logging un");
+        header("Location: /ft_minishop/index.php?error=fail_to_logging");
     }
+    else
+        header("Location: /ft_minishop/index.php?logging=error");
 ?>

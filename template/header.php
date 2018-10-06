@@ -6,6 +6,8 @@
             if (isset($_SESSION['loggued_on_user'])) {
                 ?>
                 <p>Bonjour <?php echo $_SESSION['loggued_on_user']; ?></p>
+                <br />
+                <a href="/ft_minishop/panier/validation.php">Mon panier</a>
                 <?php
             }
             else {
@@ -13,6 +15,8 @@
                     <a href="/ft_minishop/template/create.html">creer un compte </a>
                     <br />
                     <a href="/ft_minishop/template/modif.html">Modifier son compte</a>
+                    <br />
+                    <a href="/ft_minishop/template/login.html">Se connecter</a>
                     <br />
                     <a href="/ft_minishop/panier/validation.php">Mon panier</a>
                 <?php
