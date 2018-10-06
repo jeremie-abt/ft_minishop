@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <style>
+            body{
+            background-color: #acb6b9;
+            }
+            .text{
+            font-family: monospace;
+            font-style: italic;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 150px;
+            }
+            .container{
+                background-color: #909090;
+                margin:auto;
+                width: 200px;
+                height: 220px;
+                box-shadow: 5px 5px 5px black;
+                border-radius: 9px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -200px;
+                margin-left: -200px;
+            }
+            .case{
+                margin: auto;
+            }
+            .button{
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                margin:auto;
+                width: 35px;
+            }
+            .centre{
+                width: 75%;
+                margin: 0 auto;
+            }
+            .account{
+                position: fixed;
+                top: 40%;
+                left: 40%;
+                margin-top: -200px;
+                margin-left: -130px;
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+        <title>42chat</title>
+    </head>
+    <h1 class="account"><u>Create your account</u></h1>
+    <body>
+       <form method="POST" action="/ft_minishop/user/create.php">
+        <div class="container">
+            <div class="centre">
+                <h3 class="text"><b>First name:</b> <input class="case" type="text" name="first_name" value=""/></h3>
+                <h3 class="text"><b>Last name:</b> <input class="case" type="text" name="last_name" value=""/></h3>
+                <h3 class="text"><b>Identifiant:</b> <input class="case" type="text" name="login" value=""/></h3>
+                <h3 class="text"><b>Mot de passe:</b> <input class="case" type="password" name="passwd" value=""/></h3>
+                <input class="button" type="submit" name="submit" value="OK">
+            </div>
+          <br>
+        </div>
+       </form>
+    </body>
+</html>

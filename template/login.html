@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <style>
+            body{
+            background-color: #acb6b9;
+            }
+            .text{
+            font-family: monospace;
+            font-style: italic;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 150px;
+            }
+            .container{
+                background-color: #909090;
+                margin:auto;
+                width: 200px;
+                height: 220px;
+                box-shadow: 5px 5px 5px black;
+                border-radius: 9px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -200px;
+                margin-left: -200px;
+            }
+            .case{
+                margin: auto;
+            }
+            .button{
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                margin:auto;
+                width: 35px;
+            }
+            .centre{
+                width: 75%;
+                margin: 0 auto;
+            }
+        </style>
+        <title>Minishop</title>
+    </head>
+    <body>
+       <form method="POST" action="/ft_minishop/user/login.php">
+        <div class="container">
+            <div class="centre">
+                <h3 class="text"><b>Identifiant:</b> <input class="case" type="text" name="login" value=""/></h3>
+                <h3 class="text"><b>Mot de passe:</b> <input class="case" type="password" name="passwd" value=""/></h3>
+                <input class="button" type="submit" name="submit" value="OK">
+            </div>
+          <br>
+          <a href="/ft_minishop/front/user_html/create.html" title="Create an account">Create an account</a>
+          <br>
+          <br>
+          <a href="/ft_minishop/front/user_html/modif.html" title="Change your password">Change your password</a>
+        </div>
+       </form>
+    </body>
+</html>
