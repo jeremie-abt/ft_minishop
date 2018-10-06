@@ -2,7 +2,7 @@
 
 $dbServername = "localhost";
 $dbUsername = "root";
-$dbPassword = "mystas";
+$dbPassword = "roooot";
 $dbName = "ft_minishop";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
