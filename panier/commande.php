@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'includes/dhb.inc.php';
+include_once '../bdd/bdd_connec.php';
 if(isset($_POST['submit']))
 {
   $_SESSION['panier'] = array();

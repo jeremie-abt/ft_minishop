@@ -10,7 +10,7 @@ if (isset($_POST['submit']))
   }
   elseif ($_POST['submit'] === "OK")
   {
-    if ($_SESSION['login'])
+    if ($_SESSION['loggued_on_user'])
     {
       header("Location: validation.php");
       exit();
@@ -23,6 +23,8 @@ if (isset($_POST['submit']))
   }
   else
   {
+    if (!isset($_SESSION['panier']))
+      $SESSION['panier'] = Array();
     $_SESSION['panier'][] = $_POST['submit'];
     header("Location: /ft_minishop/index.php?adding=success");
     exit();
