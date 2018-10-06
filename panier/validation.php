@@ -5,6 +5,7 @@ echo '<p>Vous etes sur le point de commander :<br></p>';
 $i = 0;
 $tmp = array();
 $tmp[0][0] = 0;
+$tmp[0][2] = 0;
 $tmp[0][1] = "yo";
 $d = "nok";
 if($_SESSION['panier'])
@@ -30,15 +31,19 @@ if($_SESSION['panier'])
         $i++;
         $tmp[$i][1] = $row['title'];
         $tmp[$i][0] = 1;
+        $tmp[$i][2] = $row['prix'];
       }
   }
   foreach ($tmp as $k => $v)
   {
     if ($k !== 0)
     {
-      echo '<p>'.$v[1]."______".$v[0].'x<br></p>';
+      $prix = $v[0] * $v[2];
+      $total = $total + $prix;
+      echo '<p>'.$v[1]."______".$v[0].'x-------- '.$prix.'e<br></p>';
     }
   }
+  echo '<p>Total = '.$total.'e<br></p>';
 }
 ?>
 <form action="commande.php" method="POST">
