@@ -5,18 +5,33 @@
     {
         $pass_word = hash("whirlpool", $_POST['passwd']);
         $login = $_POST['login'];
-        $sql = "SELECT username, passwd FROM users";
+        $sql = "SELECT * FROM users";
         $req = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($req))
+        $i = 0;
+       // print_r($_SESSION);
+/*        $row = mysqli_fetch_assoc($req);
+        print_r($row);
+        $row = mysqli_fetch_assoc($req);
+        print_r($row);
+        echo "login $login passwd : $pass_word\n";
+        if ($login == $row['username'] && $pass_word == $row['passwd'])
+            echo "OK\n";
+        else
+            echo "NON\n";
+        die();*/
+        while ($row = mysqli_fetch_assoc($req))
         {
             if ($login == $row['username'] && $pass_word == $row['passwd'])
             {
                 $_SESSION['loggued_on_user'] = $login;
-                header("location: ../index.php?logging=success");
+                echo "c quoi cette merede";
+                header("Location: ../index.php?success=OK");
+                exit ();
             }
         }
-        header("Location: /ft_minishop/index.php?error=fail_to_logging");
+        header("Location: ../index.php?error=fail_to_logging");
+        exit ();
     }
     else
-        header("Location: /ft_minishop/index.php?logging=error");
+        header("Location: ../index.php?logging=error");
 ?>

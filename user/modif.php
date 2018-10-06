@@ -39,6 +39,9 @@
             }
         }
         if ((isset($_POST['newpasswd']) || isset($_POST['newlogin'])) && $i == 1)
+        {
             header("location: ../index.html?modification=success");
+            exit();
+        }
     }
 ?>

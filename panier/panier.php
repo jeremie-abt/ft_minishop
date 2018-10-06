@@ -26,12 +26,12 @@ if (isset($_POST['submit']))
     if (!isset($_SESSION['panier']))
       $SESSION['panier'] = Array();
     $_SESSION['panier'][] = $_POST['submit'];
-    header("Location: /ft_minishop/index.php?adding=success");
+    header("Location: ../index.php?adding=success");
     exit();
   }
 }
 else {
-  header("Location: /ft_minishop/index.php?adding=error");
+  header("Location: ../index.php?adding=error");
   exit();
 }
 ?>

@@ -3,7 +3,7 @@
     include_once '../bdd/bdd_connec.php';
     if (isset($_SESSION['loggued_on_user']) && $_SESSION['loggued_on_user'] != "")
     {
-        if (isset($_POST['delete']))
+        if (isset($_POST['submit']))
             {
             $username_session = $_SESSION['loggued_on_user'];
             $sql = "SELECT * FROM users";
@@ -22,6 +22,8 @@
             mysqli_query($conn, $sql);
             $_SESSION['loggued_on_user'] = "";
             header("location: ../index.php?deleting=successfull");
+            exit();
         }
     }
+    header("location: ../index.php?deleting=failure");
 ?>

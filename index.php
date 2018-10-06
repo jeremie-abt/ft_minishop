@@ -11,7 +11,7 @@
 <body>
 <?php
     include_once "template/header.php";
-    print_r($_SESSION['panier']);
+    print_r($_SESSION['loggued_on_user']);
 ?>
 <form action="#" method="POST">
 <?php
