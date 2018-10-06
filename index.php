@@ -34,6 +34,7 @@
 </form>
 
 <?php
+print_r($_SESSION);
     if (isset($_POST) && $_POST['submit'] == "OK")
     {
         foreach ($_POST as $key => $elem) {

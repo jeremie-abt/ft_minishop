@@ -2,10 +2,10 @@
 session_start();
 if (isset($_POST['submit']))
 {
-  if ($_POST['submit'] === "vider")
+  if ($_POST['submit'] === "reset")
   {
-    $_SESSION['panier'] = array();
-    header("Location: index.php?empty");
+    unset($_SESSION['panier']);
+    header("Location: ../index.php?empty");
     exit();
   }
   elseif ($_POST['submit'] === "OK")
@@ -24,7 +24,7 @@ if (isset($_POST['submit']))
   else
   {
     if (!isset($_SESSION['panier']))
-      $SESSION['panier'] = Array();
+      $_SESSION['panier'] = Array();
     $_SESSION['panier'][] = $_POST['submit'];
     header("Location: ../index.php?adding=success");
     exit();

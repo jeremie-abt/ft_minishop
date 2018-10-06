@@ -7,7 +7,10 @@
                 ?>
                 <p>Bonjour <?php echo $_SESSION['loggued_on_user']; ?></p>
                 <br />
-                <a href="../panier/validation.php">Mon panier</a>
+                <a href="/ft_minishop_git/panier/validation.php">Mon panier</a>
+                <?php 
+                    if (isset($_SESSION['panier']) && $_SESSION['panier'] != "") { echo "(1)";}
+                ?>
                 <a href="/ft_minishop_git/user/logout.php" title="Disconnect"><img src="/ft_minishop_git/img/close.gif" alt="Disconnect" height="20px" width="20px" align="right" style="padding-top:5px"/></a>
                 <form action="/ft_minishop_git/user/delete.php" method="POST">
                 <button type="submit" name="submit">
@@ -25,6 +28,9 @@
                     <a href="/ft_minishop_git/template/login.html">Se connecter</a>
                     <br />
                     <a href="/ft_minishop_git/panier/validation.php">Mon panier</a>
+                    <?php 
+                        if (isset($_SESSION['panier']) && $_SESSION['panier'] != "") { echo "(1)";}
+                    ?>
                 <?php
             }
         ?>
