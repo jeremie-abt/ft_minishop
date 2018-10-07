@@ -57,7 +57,7 @@
           $reqe = mysqli_query($conn, $sqle);
           $tab = mysqli_fetch_assoc($reqe);
           $login = $tab['username'];
-          $date = date("\[H:i\]", $row['date']);
+          $date = "le ".date("j/m/y", $row['date'])." a ".date("\[H:i\]", $row['date']);
           $user = " <b>".$login."</b>: ";
           $title = $row['article_id'];
           $sqle = "SELECT * FROM article WHERE article_id='$title'";

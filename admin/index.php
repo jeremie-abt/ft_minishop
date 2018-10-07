@@ -28,7 +28,6 @@
 </html>
 <?php
     include_once "display.php";
-    print_r($_POST);
     if ($_POST['submit'] === "select_display") {
         if (isset($_POST['article']))
         {
