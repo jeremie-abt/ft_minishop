@@ -3,6 +3,11 @@
         $sql = "SELECT * FROM article";
         $req = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($req);
+        ?>
+        <form action="add_article.php" method="post">
+            <button type="submit" name="add">Ajouter</button>
+        </form>
+        <?php
         if ($resultCheck < 1)
         {
           echo "trouve pas";
@@ -12,7 +17,10 @@
             echo "le titre : ".$row['title'];
             ?>
             <form action="delete_article.php" method="post">
-                <button type="submit" name="submit" value="<?php echo $row['id_article']; ?>"></button>
+                <button type="submit" name="submit" value='<?php echo $row['article_id'] ?>'>Suppr</button>
+            </form>
+            <form action="modif_article.php" method="post">
+                <button type="submit" name="submit" value='<?php echo $row['article_id'] ?>'>Modif</button>
             </form>
             <?php
         }
