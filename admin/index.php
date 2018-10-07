@@ -1,4 +1,5 @@
 <?php
+    //date_default_timezone_set("Europe/Paris");
     session_start();
     include_once '../bdd/bdd_connec.php';
     if ($_SESSION['loggued_on_user']['admin'] !== 1)
@@ -28,12 +29,22 @@
 <?php
     include_once "display.php";
     print_r($_POST);
-    if ($_POST['submit' === "select_display"]) {
-        if ($_POST['article'])
-            ft_print_article();
-    }
-    else
-    {
-        $sql;
+    if ($_POST['submit'] === "select_display") {
+        if (isset($_POST['article']))
+        {
+            ft_print_article($conn);
+        }
+        if (isset($_POST['categories']))
+        {
+            ft_print_categories($conn);
+        }
+        if (isset($_POST['transaction']))
+        {
+            ft_print_transaction($conn);
+        }
+        if (isset($_POST['users']))
+        {
+            ft_print_users($conn);
+        }
     }
 ?>

@@ -18,7 +18,7 @@
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         if ($row = mysqli_fetch_assoc($result)) {
-            foreach ($row as $key => $elem) 
+            foreach ($row as $key => $elem)
             {
                 if ($key !== "categories_id") {
                 ?>
@@ -53,16 +53,14 @@
             ?><div class="article-container">
                 <?php echo "<div><h1>".$row['title']."</h1></div>\n";?>
                 <img width='150px' height='150px' src="<?php echo $row['img_path'] ?>">
-                <?php echo "<div>".$row['description']."</div>";?> 
-                </div> 
+                <?php echo "<div>".$row['description']."</div>";?>
+                </div>
                 <form action="panier/panier.php" method="POST">
                     <button name="submit" type="submit" value='<?php echo $row['article_id'] ?>'>ajouter au panier</button>
         </form>
                 <?php
         }
-
     }
-
 ?>
 </body>
 </html>
