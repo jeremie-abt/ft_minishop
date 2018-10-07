@@ -18,7 +18,6 @@
     <?php include_once "../template/header.php"; ?>
 
     <form action="#" method="POST">
-        Categories :<input name="categories" type="checkbox">
         Article :<input name="article" type="checkbox">
         Transaction :<input name="transaction" type="checkbox">
         Users :<input name="users" type="checkbox">
@@ -32,10 +31,6 @@
         if (isset($_POST['article']))
         {
             ft_print_article($conn);
-        }
-        if (isset($_POST['categories']))
-        {
-            ft_print_categories($conn);
         }
         if (isset($_POST['transaction']))
         {

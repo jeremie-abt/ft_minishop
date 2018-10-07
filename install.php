@@ -20,9 +20,9 @@ if ($conn1) {
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
   mysqli_query($conn, $sql);
   $sql = "INSERT INTO article (article_id, categories_id, title, description, prix, img_path) VALUES
-  (1, 4, 'hitman', 'La bagarre en costard', 1500, 'img/hitman.jpg'),
+  (1, 6, 'hitman', 'La bagarre en costard', 1500, 'img/hitman.jpg'),
   (2, 5, 'inserer_random_film_damour', 'ils vecurent heureux et eurent beaucoup d enfants', 15, 'img/amour.jpg'),
-  (3, 4, 'the raid', 'jen ai marre', 1100, 'img/theraid.jpg'),
+  (3, 6, 'the raid', 'jen ai marre', 1100, 'img/theraid.jpg'),
   (4, 5, 'love actually', 'lol c bo', 1500, 'img/loveactually.jpg');";
   mysqli_query($conn, $sql);
   $sql = "CREATE TABLE IF NOT EXISTS categories (
@@ -36,9 +36,12 @@ if ($conn1) {
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
   mysqli_query($conn, $sql);
   $sql = "INSERT INTO categories (categories_id, action, comedie, horror, stress, amour, bagarre) VALUES
-  (3, 1, NULL, NULL, NULL, NULL, NULL),
-  (4, 1, NULL, NULL, NULL, NULL, 1),
-  (5, 1, 1, NULL, NULL, 1, NULL);";
+  (1, 1, NULL, NULL, NULL, NULL, NULL),
+  (2, NULL, 1, NULL, NULL, NULL, NULL),
+  (3, NULL, NULL, 1, NULL, NULL, NULL),
+  (4, NULL, NULL, NULL, 1, NULL, NULL),
+  (5, NULL, NULL, NULL, NULL, 1, NULL),
+  (6, NULL, NULL, NULL, NULL, NULL, 1);";
   mysqli_query($conn, $sql);
   $sql = "CREATE TABLE IF NOT EXISTS transaction (
     transaction_id int(11) NOT NULL,
