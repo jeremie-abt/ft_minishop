@@ -11,7 +11,6 @@
 <body>
 <?php
     include_once "template/header.php";
-    print_r($_SESSION['loggued_on_user']);
 ?>
 <form action="#" method="POST">
 <?php
@@ -34,7 +33,6 @@
 </form>
 
 <?php
-print_r($_SESSION);
     if (isset($_POST) && $_POST['submit'] == "OK")
     {
         foreach ($_POST as $key => $elem) {

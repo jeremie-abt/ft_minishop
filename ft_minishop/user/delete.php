@@ -1,11 +1,11 @@
 <?php
     session_start();
     include_once '../bdd/bdd_connec.php';
-    if (isset($_SESSION['loggued_on_user']) && $_SESSION['loggued_on_user'] != "")
+    if (isset($_SESSION['loggued_on_user']))
     {
         if (isset($_POST['submit']))
-            {
-            $username_session = $_SESSION['loggued_on_user'];
+        {
+            $username_session = $_SESSION['loggued_on_user']['login'];
             $sql = "SELECT * FROM users";
             $req = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($req))
@@ -20,7 +20,7 @@
             mysqli_query($conn, $sql);
             $sql = "DELETE FROM users WHERE username='".$username_session."'";
             mysqli_query($conn, $sql);
-            $_SESSION['loggued_on_user'] = "";
+            unset($_SESSION['loggued_on_user']);
             header("location: ../index.php?deleting=successfull");
             exit();
         }

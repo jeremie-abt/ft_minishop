@@ -3,7 +3,7 @@
     include_once '../bdd/bdd_connec.php';
     if (isset($_SESSION['loggued_on_user']))
     {
-        if (isset($_POST['oldlogin']) && isset($_POST['newlogin']) && isset($_POST['submit']))
+        if ($_POST['oldlogin'] !== '' && $_POST['newlogin'] !== '' && isset($_POST['submit']))
         {
             $sql = "SELECT username FROM users";
             $req = mysqli_query($conn, $sql);
@@ -11,15 +11,18 @@
             while ($row = mysqli_fetch_array($req))
             {
                 if ($row['username'] == $newuser_name)
-                    die("Error Username already exist");
+                {
+                    header("location: ../index.php?modification=failure_same_passwd");
+                    exit();
+                }
             }
             $new_username = mysqli_real_escape_string($conn, $_POST['newlogin']); 
             $sql = "UPDATE users set username='".$new_username."'WHERE username='".$olduser_name."'";
             $req = mysqli_query($conn, $sql);
-            $_SESSION['loggued_on_user'] = $new_username;
+            $_SESSION['loggued_on_user']['login'] = $new_username;
             $i = 1;
         }
-        if (isset($_POST['oldpw']) && isset($_POST['newpw']) && isset($_POST['submit']))
+        if ($_POST['oldpw'] !== "" && $_POST['newpw'] !== "")
         {
             $sql = "SELECT username, passwd FROM users";
             $req = mysqli_query($conn, $sql);
@@ -28,8 +31,11 @@
             while ($row = mysqli_fetch_array($req))
             {
                 if ($row['passwd'] == $newpw)
-                    die("same password as the previous one");
-                if ($row['username'] == $_SESSION['loggued_on_user'] && $row['passwd'] == $oldpw)
+                {
+                    header("location: ../index.php?modification=failure/passwd");
+                    exit();
+                }
+                if ($row['username'] == $_SESSION['loggued_on_user']['login'] && $row['passwd'] == $oldpw)
                 {
                     $sql = "UPDATE users set passwd='".$newpw."'WHERE passwd='".$oldpw."'";
                     $req = mysqli_query($conn, $sql);
@@ -40,8 +46,9 @@
         }
         if ((isset($_POST['newpasswd']) || isset($_POST['newlogin'])) && $i == 1)
         {
-            header("location: ../index.html?modification=success");
+            header("location: ../index.php?modification=success");
             exit();
         }
     }
+    header("location: ../index.php?modification=please_log_first");
 ?>
