@@ -18,10 +18,6 @@
         }
     }
 
-
-
-
-
     function    ft_print_categories($conn) {
         $sql = "SELECT * FROM categories";
         $req = mysqli_query($conn, $sql);
@@ -40,11 +36,6 @@
             <?php
         }
     }
-
-
-
-
-
 
     function    ft_print_transaction($conn) {
         date_default_timezone_set("Europe/Paris");
@@ -70,14 +61,6 @@
         }
     }
 
-
-
-
-
-
-
-
-
     function    ft_print_users($conn) {
         $sql = "SELECT * FROM users";
         $req = mysqli_query($conn, $sql);
@@ -89,11 +72,22 @@
         while ($row = mysqli_fetch_assoc($req))
         {
             echo "login : ".$row['username'];
+            if ($row['admin'] == NULL)
+            {
             ?>
-            <form action="delete_article.php" method="post">
-                <button type="submit" name="submit" value="<?php echo $row['id_article']; ?>"></button>
+            <form action="promote.php" method="post">
+                <button type="submit" name="submit" value="<?php echo $row['user_id']; ?>">Promote</button>
             </form>
             <?php
+            }
+            if ($row['admin'] == 1)
+            {
+            ?>
+            <form action="demote.php" method="post">
+                <button type="submit" name="submit" value="<?php echo $row['user_id']; ?>">Demote</button>
+            </form>
+            <?php
+          }
         }
     }
 ?>

@@ -3,7 +3,7 @@
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "roooot";
-$dbName = "ft_minishop";
+$dbName = "minishop";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 if (!$conn) {

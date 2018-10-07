@@ -1,4 +1,5 @@
 <?php
+    include_once "install.php";
     include_once "bdd/bdd_connec.php";
 ?>
 <!DOCTYPE html>
