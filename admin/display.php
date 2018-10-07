@@ -1,6 +1,5 @@
 <?php
     include_once "../bdd/bdd_connec.php";
-
     function    ft_print_article() {
         echo "sisi\n";
         $sql = "SELECT * FROM users";

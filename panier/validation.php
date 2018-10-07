@@ -4,6 +4,7 @@ include_once '../bdd/bdd_connec.php';
 echo '<p>Vous etes sur le point de commander :<br></p>';
 $i = 0;
 $tmp = array();
+$total = 0;
 /*$tmp[0][0] = 0;
 $tmp[0][2] = 0;
 $tmp[0][1] = "yo";*/
@@ -29,20 +30,17 @@ if($_SESSION['panier'])
       if ($d != "ok")
       {
         $tmp[$i][1] = $row['title'];
-        $tmp[$i][0] = $v;
+        $tmp[$i][0] = 1;
         $tmp[$i][2] = $row['prix'];
+        $tmp[$i][3] = $row['article_id'];
         $i++;
       }
   }
-  print_r($tmp);
   foreach ($tmp as $k => $v)
   {
-    if ($k !== 0)
-    {
       $prix = $v[0] * $v[2];
       $total = $total + $prix;
       echo "<p>(".$v[0].'x) '.$v[1].' : '.$prix.'euros <br></p>';
-    }
   }
   echo '<p>Total = '.$total.'e<br></p>';
 }
@@ -56,21 +54,22 @@ if($_SESSION['panier'])
 
 
 <?php
-  
+
   if(isset($_POST['submit']) && $_POST['submit'] === "command" && isset($_SESSION['loggued_on_user']))
   {
-    $username_session = $_SESSION['loggued_on_user'];
+    $username_session = $_SESSION['loggued_on_user']['login'];
     $sql = "SELECT user_id FROM users WHERE username='$username_session'";
     $req = mysqli_query($conn, $sql);
+    $resultCheck = mysqli_num_rows($req);
     $row = mysqli_fetch_assoc($req);
     $user_id = $row['user_id'];
     foreach ($tmp as $elem) {
-      $sql = "INSERT INTO transaction (user_id, article_id, nb_of_article) VALUES ($user_id, $elem[2], $elem[1])";
-      echo "sql : $sql\n";
-      exit();
+      $time = time();
+      $sql = "INSERT INTO transaction (user_id, article_id, nb_of_article, date) VALUES ($user_id, $elem[3], $elem[0], $time)";
+      mysqli_query($conn, $sql);
+      //echo "sql : ".$sql."<br>";
+      //exit();
     }
-    exit ();
-    //INSERT INTO users (firstname, lastname, username, passwd) VALUES ('$first_name', '$last_name', '$user_name', '$pass_wd')";
     unset($_SESSION['panier']);
     header("Location: ../index.php?comand=success");
     exit();
